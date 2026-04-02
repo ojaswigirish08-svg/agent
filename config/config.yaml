@@ -1,0 +1,96 @@
+environment: development
+
+server:
+  host: 0.0.0.0
+  port: 8001
+  reload: true
+
+database:
+  url: ${DATABASE_URL}
+
+llm:
+  provider: gemini
+  model: gemini-2.0-flash
+  temperature: 0.7
+  max_tokens: 1000
+
+stt:
+  provider: whisper
+  model: base
+  language: en
+
+tts:
+  provider: polly
+  voice_id: Joanna
+  engine: neural
+  language_code: en-US
+
+features:
+  warmup: true
+  behavioral_baseline: true
+  dynamic_difficulty: true
+  contradiction_traps: true
+  personal_anchors: true
+  numerical_probing: true
+  scenario_followup: true
+  linguistic_analysis: true
+
+anti_cheat:
+  whitelisted_domains:
+    - localhost:8001
+    - localhost:3000
+  signal_weights:
+    tab_switch_perfect_answer: 0.8
+    zero_fillers_complex: 0.5
+    consistent_delay: 0.7
+    contradiction_failed: 0.7
+    generic_anchor_answer: 0.4
+
+interview:
+  duration:
+    fresh_graduate: 25
+    trained_fresher: 30
+    experienced_junior: 35
+    experienced_senior: 45
+  questions:
+    fresh_graduate: 10
+    trained_fresher: 12
+    experienced_junior: 15
+    experienced_senior: 18
+  difficulty_levels: 5
+  warmup_questions: 2
+
+domains:
+  analog_layout:
+    pillars:
+      - basic_layout_concepts
+      - matching_techniques
+      - parasitic_awareness
+      - latch_up_esd
+      - guard_rings
+      - drc_lvs_basics
+      - symmetry_best_practices
+      - device_understanding
+      - shielding_routing
+      - technology_awareness
+  physical_design:
+    pillars:
+      - floorplanning
+      - power_planning
+      - placement
+      - clock_tree_synthesis
+      - routing
+      - timing_closure
+      - drc_lvs_signoff
+      - static_timing_analysis
+      - tool_knowledge
+  design_verification:
+    pillars:
+      - verification_methodologies
+      - testbench_architecture
+      - functional_coverage
+      - assertions_sva
+      - simulation_vs_formal
+      - debugging_skills
+      - protocol_knowledge
+      - regression_signoff
